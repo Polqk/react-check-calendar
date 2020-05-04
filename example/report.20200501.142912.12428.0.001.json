@@ -1,0 +1,481 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200501.142912.12428.0.001.json",
+    "dumpEventTime": "2020-05-01T14:29:12Z",
+    "dumpEventTimeStamp": "1588336152758",
+    "processId": 12428,
+    "cwd": "C:\\Users\\polak\\Web\\react-check-calendar\\example",
+    "commandLine": [
+      "node",
+      "C:\\Users\\polak\\Web\\react-check-calendar\\node_modules\\react-scripts\\scripts\\start.js"
+    ],
+    "nodejsVersion": "v12.11.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.11.0",
+      "v8": "7.7.299.11-node.12",
+      "uv": "1.32.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1c",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v12.11.0/node-v12.11.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.11.0/node-v12.11.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.11.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18362",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 410921,
+        "nice": 0,
+        "sys": 244312,
+        "idle": 1536218,
+        "irq": 26734
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 353890,
+        "nice": 0,
+        "sys": 248031,
+        "idle": 1589343,
+        "irq": 1437
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 556531,
+        "nice": 0,
+        "sys": 208375,
+        "idle": 1426359,
+        "irq": 1843
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 378781,
+        "nice": 0,
+        "sys": 208750,
+        "idle": 1603734,
+        "irq": 1125
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 463843,
+        "nice": 0,
+        "sys": 273468,
+        "idle": 1453953,
+        "irq": 1859
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 385265,
+        "nice": 0,
+        "sys": 148796,
+        "idle": 1657203,
+        "irq": 1218
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 421843,
+        "nice": 0,
+        "sys": 260312,
+        "idle": 1509109,
+        "irq": 1843
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "speed": 3408,
+        "user": 457203,
+        "nice": 0,
+        "sys": 189093,
+        "idle": 1544968,
+        "irq": 1359
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "Ethernet",
+        "internal": false,
+        "mac": "70:8b:cd:a6:1c:c7",
+        "address": "fe80::78f6:b048:b074:781f",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 3
+      },
+      {
+        "name": "Ethernet",
+        "internal": false,
+        "mac": "70:8b:cd:a6:1c:c7",
+        "address": "192.168.0.103",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:0d",
+        "address": "fe80::c89e:139c:4840:a225",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 13
+      },
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:0d",
+        "address": "192.168.56.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "DESKTOP-GNT2MN8"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff6136a7539",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+10873"
+    },
+    {
+      "pc": "0x00007ff6136ab8cc",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+28172"
+    },
+    {
+      "pc": "0x00007ff6136aa878",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+23992"
+    },
+    {
+      "pc": "0x00007ff613798c0b",
+      "symbol": "v8::base::CPU::has_sse+37563"
+    },
+    {
+      "pc": "0x00007ff613f99aee",
+      "symbol": "v8::Isolate::ReportExternalAllocationLimitReached+94"
+    },
+    {
+      "pc": "0x00007ff613f81b31",
+      "symbol": "v8::SharedArrayBuffer::Externalize+833"
+    },
+    {
+      "pc": "0x00007ff613e4f4bc",
+      "symbol": "v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1436"
+    },
+    {
+      "pc": "0x00007ff613e5a860",
+      "symbol": "v8::internal::Heap::ProtectUnprotectedMemoryChunks+1312"
+    },
+    {
+      "pc": "0x00007ff613e57394",
+      "symbol": "v8::internal::Heap::PageFlagsAreConsistent+3204"
+    },
+    {
+      "pc": "0x00007ff613e4cc23",
+      "symbol": "v8::internal::Heap::CollectGarbage+1283"
+    },
+    {
+      "pc": "0x00007ff613e4b3f4",
+      "symbol": "v8::internal::Heap::AddRetainedMap+2356"
+    },
+    {
+      "pc": "0x00007ff613e6c6c5",
+      "symbol": "v8::internal::Factory::NewFillerObject+53"
+    },
+    {
+      "pc": "0x00007ff613bd8e99",
+      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+4057"
+    },
+    {
+      "pc": "0x00007ff6143c580d",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+567949"
+    },
+    {
+      "pc": "0x00007ff614417e32",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+905394"
+    },
+    {
+      "pc": "0x000000c655e5306b",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2161283072,
+    "totalCommittedMemory": 2161283072,
+    "usedMemory": 1813706888,
+    "availableMemory": 121032008,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 33554432,
+        "committedMemory": 33554432,
+        "capacity": 16759808,
+        "used": 636568,
+        "available": 16123240
+      },
+      "old_space": {
+        "memorySize": 2001580032,
+        "committedMemory": 2001580032,
+        "capacity": 1739726744,
+        "used": 1688339584,
+        "available": 51387160
+      },
+      "code_space": {
+        "memorySize": 1474560,
+        "committedMemory": 1474560,
+        "capacity": 1301984,
+        "used": 1301984,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 3674112,
+        "committedMemory": 3674112,
+        "capacity": 2839120,
+        "used": 2839120,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 120115200,
+        "committedMemory": 120115200,
+        "capacity": 120006936,
+        "used": 120006936,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 550400,
+        "used": 550400,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 16759808,
+        "used": 0,
+        "available": 16759808
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 250.781,
+    "kernelCpuSeconds": 504.062,
+    "cpuConsumptionPercent": 375.544,
+    "maxRss": 2379800576,
+    "pageFaults": {
+      "IORequired": 2429215,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 5846,
+      "writes": 8
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\polak\\AppData\\Roaming",
+    "asl.log": "Destination=file",
+    "BABEL_ENV": "development",
+    "BREAKPAD_DUMP_LOCATION": "C:\\Program Files (x86)\\Google\\Chrome",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132056208972477653",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "DESKTOP-GNT2MN8",
+    "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "GOOGLE_API_KEY": "no",
+    "GOOGLE_DEFAULT_CLIENT_ID": "no",
+    "GOOGLE_DEFAULT_CLIENT_SECRET": "no",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\polak",
+    "IDEA_INITIAL_DIRECTORY": "C:\\Program Files\\JetBrains\\WebStorm 2020.1.1\\jbr\\bin",
+    "INIT_CWD": "C:\\Users\\polak\\Web\\react-check-calendar\\example",
+    "LOCALAPPDATA": "C:\\Users\\polak\\AppData\\Local",
+    "LOGONSERVER": "\\\\DESKTOP-GNT2MN8",
+    "NODE": "C:\\Program Files\\nodejs\\node.exe",
+    "NODE_ENV": "development",
+    "NODE_PATH": "",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"start\"],\"original\":[\"start\"]}",
+    "npm_config_bin_links": "true",
+    "npm_config_browser": "firefox",
+    "npm_config_ignore_optional": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_init_license": "MIT",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "npm_config_save_prefix": "^",
+    "npm_config_strict_ssl": "true",
+    "npm_config_user_agent": "yarn/1.9.4 npm/? node/v12.11.0 win32 x64",
+    "npm_config_version_commit_hooks": "true",
+    "npm_config_version_git_message": "v%s",
+    "npm_config_version_git_sign": "",
+    "npm_config_version_git_tag": "true",
+    "npm_config_version_tag_prefix": "v",
+    "npm_config_viewer": "firefox",
+    "npm_execpath": "C:\\Users\\polak\\AppData\\Roaming\\npm\\node_modules\\yarn\\bin\\yarn.js",
+    "npm_lifecycle_event": "start",
+    "npm_lifecycle_script": "node ../node_modules/react-scripts/bin/react-scripts.js start",
+    "npm_node_execpath": "C:\\Program Files\\nodejs\\node.exe",
+    "npm_package_browserslist_0": ">0.2%",
+    "npm_package_browserslist_1": "not dead",
+    "npm_package_browserslist_2": "not ie <= 11",
+    "npm_package_browserslist_3": "not op_mini all",
+    "npm_package_dependencies_react": "link:../node_modules/react",
+    "npm_package_dependencies_react_check_calendar": "link:..",
+    "npm_package_dependencies_react_dom": "link:../node_modules/react-dom",
+    "npm_package_dependencies_react_scripts": "link:../node_modules/react-scripts",
+    "npm_package_eslintConfig_extends": "react-app",
+    "npm_package_homepage": "https://polqk.github.io/react-check-calendar",
+    "npm_package_name": "react-check-calendar-example",
+    "npm_package_private": "true",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_scripts_build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
+    "npm_package_scripts_eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject",
+    "npm_package_scripts_start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
+    "npm_package_scripts_test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
+    "npm_package_version": "0.0.0",
+    "NUMBER_OF_PROCESSORS": "8",
+    "NVM_HOME": "C:\\Users\\polak\\AppData\\Roaming\\nvm",
+    "NVM_SYMLINK": "C:\\Program Files\\nodejs",
+    "OneDrive": "C:\\Users\\polak\\OneDrive",
+    "OneDriveConsumer": "C:\\Users\\polak\\OneDrive",
+    "OS": "Windows_NT",
+    "PATH": "C:\\Users\\polak\\Web\\react-check-calendar\\example\\node_modules\\.bin;C:\\Users\\polak\\AppData\\Local\\Yarn\\Data\\link\\node_modules\\.bin;C:\\Users\\polak\\Web\\react-check-calendar\\example\\node_modules\\.bin;C:\\Users\\polak\\AppData\\Local\\Yarn\\Data\\link\\node_modules\\.bin;C:\\Users\\polak\\AppData\\Local\\Yarn\\bin;C:\\Program Files\\libexec\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Users\\polak\\Web\\react-check-calendar\\node_modules\\.bin;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\WinTask\\Bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\PhantomJs\\bin\\phantomjs;C:\\casperjs\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\PuTTY\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Users\\polak\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\nodejs\\;C:\\Program Files\\Amazon\\AWSCLI\\bin\\;C:\\ProgramData\\chocolatey\\bin;;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Users\\polak\\AppData\\Local\\Programs\\Python\\Python37-32\\Scripts\\;C:\\Users\\polak\\AppData\\Local\\Programs\\Python\\Python37-32\\;C:\\Users\\polak\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\polak\\AppData\\Local\\atom\\bin;%DASHLANE_DLL_DIR%;C:\\Users\\polak\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\PhantomJs\\bin\\phantomjs;C:\\casperjs\\bin\\;C:\\Program Files\\MongoDB\\Server\\3.6\\bin;C:\\Program Files\\Heroku\\bin;C:\\Users\\polak\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\polak\\AppData\\Roaming\\npm;C:\\Users\\polak\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\polak\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\polak\\AppData\\Local\\.meteor;;C:\\Users\\polak\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\WebStorm 2020.1.1\\bin;",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 94 Stepping 3, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "5e03",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "PYTHON": "C:\\Users\\polak\\AppData\\Local\\Programs\\Python\\Python37\\python.exe",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\WINDOWS",
+    "TEMP": "E:\\TEMP\\TEMP",
+    "TERMINAL_EMULATOR": "JetBrains-JediTerm",
+    "TMP": "E:\\TEMP\\TEMP",
+    "USERDOMAIN": "DESKTOP-GNT2MN8",
+    "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-GNT2MN8",
+    "USERNAME": "polak",
+    "USERPROFILE": "C:\\Users\\polak",
+    "VBOX_MSI_INSTALL_PATH": "C:\\Program Files\\Oracle\\VirtualBox\\",
+    "WEBPACK_DEV_SERVER": "true",
+    "WebStorm": "C:\\Program Files\\JetBrains\\WebStorm 2020.1.1\\bin;",
+    "windir": "C:\\WINDOWS",
+    "YARN_WRAP_OUTPUT": "false",
+    "__INTELLIJ_COMMAND_HISTFILE__": "C:\\Users\\polak\\AppData\\Roaming\\JetBrains\\WebStorm2020.1\\terminal\\history\\history-828"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\Program Files\\AVAST Software\\Avast\\aswhook.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\MSASN1.dll",
+    "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\System32\\profapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMMBASE.dll",
+    "C:\\WINDOWS\\System32\\cfgmgr32.dll",
+    "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\System32\\powrprof.dll",
+    "C:\\WINDOWS\\System32\\UMPDC.dll",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\System32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\system32\\wshbth.dll",
+    "C:\\Windows\\System32\\rasadhlp.dll",
+    "C:\\WINDOWS\\System32\\fwpuclnt.dll"
+  ]
+}

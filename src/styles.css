@@ -1,0 +1,155 @@
+.check-calendar__day-number {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.check-calendar__month, .check-calendar_day {
+  color: #272847;
+}
+
+/* add css module styles here (optional) */
+.check-calendar {
+  position: relative;
+  padding: 0 35px;
+}
+
+.check-calendar > button {
+  position: absolute;
+  cursor: pointer;
+  height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--check-calendar-main-color);
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.check-calendar > button:hover {
+
+}
+
+.check-calendar > button svg {
+  fill: var(--check-calendar-main-color);
+}
+
+.check-calendar__prev {
+  left: 0;
+}
+
+.check-calendar__next {
+  right: 0;
+}
+
+.btnNextAvCalendar {
+  float: right;
+}
+
+tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 7px;
+}
+tbody tr:last-child td:last-child {
+  border-radius: 0 0 7px 0;
+}
+tbody tr:first-child {
+  border-radius: 7px 7px 0 0;
+  background-color: transparent;
+}
+tbody tr:first-child td:first-child {
+  border-radius: 7px 0 0 0;
+  width: 35%;
+}
+tbody tr:first-child td:last-child {
+  border-radius: 0 7px 0 0;
+}
+
+tbody td, tbody th {
+  min-width: 72px;
+  max-width: 72px;
+  height: 50px;
+  min-height: 50px;
+  border-left: 1px solid #b1bcc3;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+tbody td:first-of-type, tbody th:first-of-type {
+  border-left: none;
+}
+
+.check-calendar__table {
+  box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+  position: relative;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+  background: #fff;
+  color: #272847;
+  border-radius: 7px;
+  border-color: #3d464d;
+  font-size: 14px;
+  line-height: inherit;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.biggerCheckbox {
+  -ms-transform: scale(1.5);
+  /* IE */
+  -moz-transform: scale(1.5);
+  /* FF */
+  -webkit-transform: scale(1.5);
+  /* Safari and Chrome */
+  -o-transform: scale(1.5);
+  /* Opera */
+}
+
+.check-calendar__header {
+  padding: 16px 0 16px 0;
+  color: #272847;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.check-calendar__header td {
+  border-bottom: 2px solid #e2e6e9;
+}
+
+.hSpan {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.hoverHourRow {
+  background: rgba(24, 144, 255, 0.22);
+}
+
+.check-calendar__row-header {
+  cursor: pointer;
+}
+
+.check-calendar__container {
+  width: 100%;
+  transition: opacity .4s;
+  opacity: 1;
+}
+
+.check-calendar__container--hide {
+  opacity: 0;
+}
+
+.check-calendar__hour small {
+  margin-left: 1px;
+}
+
+.check-calendar__hidden {
+  display: none;
+}
+
+.display {
+  display: block;
+}
+
+.check-calendar__button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
