@@ -15,12 +15,12 @@ npm install --save react-check-calendar
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-check-calendar'
+import CheckCalendar from 'react-check-calendar'
 import 'react-check-calendar/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <CheckCalendar />
   }
 }
 ```

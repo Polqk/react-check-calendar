@@ -30,6 +30,21 @@ function _inheritsLoose(subClass, superClass) {
   subClass.__proto__ = superClass;
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
 var Left = function Left() {
   return React.createElement("svg", {
     height: 30,
@@ -50,8 +65,6 @@ var Right = function Right() {
 
 var defaultProps = {
   startWeekDay: 1,
-  checkedDates: [],
-  disabledDates: [],
   locale: 'en',
   hoursIntervals: [{
     start: 8,
@@ -118,20 +131,24 @@ var getMomentFromDate = function getMomentFromDate(date) {
 };
 
 var RowHeader = function RowHeader(_ref) {
-  var item = _ref.item;
+  var interval = _ref.interval;
 
   var _React$useContext = React.useContext(CheckContext),
       props = _React$useContext.props;
 
-  var start = item.start,
-      end = item.end;
+  var start = interval.start,
+      end = interval.end;
 
   var _getDatesFormats = getDatesFormats(props),
       fromHour = _getDatesFormats.fromHour,
       toHour = _getDatesFormats.toHour;
 
+  if (props.renderRowHeader) {
+    return props.renderRowHeader(interval);
+  }
+
   return React.createElement("td", {
-    className: "check-calendar__row-header"
+    className: classNames('check-calendar__row-header', props.headerRowClassName)
   }, React.createElement("div", {
     className: "check-calendar__hour"
   }, start && HTMLParser("<span>" + (getMomentFromNumber(moment(), start).format(fromHour).replace(fromHour.charAt(fromHour.indexOf('mm') - 1) + '00', '') || '') + "</span>"), end && HTMLParser("<span>" + (getMomentFromNumber(moment(), end).format(toHour).replace(fromHour.charAt(fromHour.indexOf('mm') - 1) + '00', '') || '') + "</span>")));
@@ -142,6 +159,10 @@ var ColumnDate = function ColumnDate(_ref) {
 
   var _React$useContext = React.useContext(CheckContext),
       props = _React$useContext.props;
+
+  if (props.renderColumnHeader) {
+    return props.renderColumnHeader(date);
+  }
 
   return React.createElement("div", null, React.createElement("div", null, React.createElement(Moment, {
     className: "check-calendar_day",
@@ -158,28 +179,42 @@ var ColumnDate = function ColumnDate(_ref) {
   }, date)), React.createElement("div", null));
 };
 
-var Checkbox = function Checkbox(props) {
+var Checkbox = function Checkbox(_ref) {
+  var interval = _ref.interval,
+      props = _objectWithoutPropertiesLoose(_ref, ["interval"]);
+
+  var _React$useContext = React.useContext(CheckContext),
+      _React$useContext$pro = _React$useContext.props,
+      disableBefore = _React$useContext$pro.disableBefore,
+      disableAfter = _React$useContext$pro.disableAfter,
+      disabledDates = _React$useContext$pro.disabledDates;
+
   var _handleChange = function _handleChange(e) {
     var value = e.target.checked;
-
-    if (props.onChange) {
-      props.onChange(value, _extends(_extends({}, props), {}, {
-        checked: value,
-        value: value ? 0 : 1
-      }));
-    }
+    props.onChange(value, _extends(_extends({}, props), {}, {
+      checked: value,
+      value: value ? 0 : 1,
+      interval: interval
+    }));
   };
 
+  var isBeforeDisabled = disableBefore ? interval.end.isBefore(getMomentFromDate(disableBefore)) : false;
+  var isAfterDisabled = disableAfter ? interval.start.isAfter(getMomentFromDate(disableAfter)) : false;
+  var isDisabledDate = Array.isArray(disabledDates) ? disabledDates.some(function (d) {
+    return getMomentFromDate(d).isBetween(interval.start, interval.end);
+  }) : false;
+  var disabled = props.disabled || isBeforeDisabled || isAfterDisabled || isDisabledDate;
   return React.createElement("label", {
     className: classNames('check-calendar-checkbox__wrapper', {
-      disabled: props.disabled
+      disabled: disabled
     }, props.className)
   }, React.createElement("span", {
     className: "check-calendar-checkbox"
   }, React.createElement("input", Object.assign({}, props, {
     onChange: _handleChange,
     className: classNames('check-calendar-checkbox__input'),
-    type: "checkbox"
+    type: "checkbox",
+    disabled: disabled
   })), React.createElement("span", {
     className: "check-calendar-checkbox__inner"
   })));
@@ -207,7 +242,7 @@ var CheckCalendar = /*#__PURE__*/function (_React$Component) {
         _this.setState({
           loading: false,
           currentDate: _this.state.currentDate.clone().subtract(7, 'days')
-        });
+        }, _this.props.onPreviousClick);
       }, 400);
     };
 
@@ -220,7 +255,7 @@ var CheckCalendar = /*#__PURE__*/function (_React$Component) {
         _this.setState({
           loading: false,
           currentDate: _this.state.currentDate.clone().add(7, 'days')
-        });
+        }, _this.props.onNextClick);
       }, 400);
     };
 
@@ -280,9 +315,13 @@ var CheckCalendar = /*#__PURE__*/function (_React$Component) {
         hideDays = _this$props2.hideDays,
         max = _this$props2.max,
         min = _this$props2.min,
-        disableBefore = _this$props2.disableBefore,
-        disableAfter = _this$props2.disableAfter,
-        checkedDates = _this$props2.checkedDates;
+        checkedDates = _this$props2.checkedDates,
+        leftButton = _this$props2.leftButton,
+        rightButton = _this$props2.rightButton,
+        containerClassName = _this$props2.containerClassName,
+        tableClassName = _this$props2.tableClassName,
+        headerClassName = _this$props2.headerClassName,
+        contentClassName = _this$props2.contentClassName;
     var _this$state = this.state,
         loading = _this$state.loading,
         currentDate = _this$state.currentDate,
@@ -294,30 +333,30 @@ var CheckCalendar = /*#__PURE__*/function (_React$Component) {
         props: this.props
       }
     }, React.createElement("div", {
-      className: "check-calendar"
+      className: classNames('check-calendar', containerClassName)
     }, React.createElement("button", {
-      className: "check-calendar__button check-calendar__prev",
+      className: classNames('check-calendar__button check-calendar__prev', leftButton === null || leftButton === void 0 ? void 0 : leftButton.className),
       disabled: !!min && dates[0].clone().subtract(1, 'day').isBefore(moment(min)),
       onClick: this._handlePrevious
-    }, React.createElement(Left, null)), React.createElement("button", {
-      className: "check-calendar__button check-calendar__next",
+    }, (leftButton === null || leftButton === void 0 ? void 0 : leftButton.content) || React.createElement(Left, null)), React.createElement("button", {
+      className: classNames('check-calendar__button check-calendar__next', rightButton === null || rightButton === void 0 ? void 0 : rightButton.className),
       disabled: !!max && dates[dates.length - 1].clone().add(1, 'day').isAfter(moment(max)),
       onClick: this._handleNext
-    }, React.createElement(Right, null)), React.createElement("div", {
+    }, (rightButton === null || rightButton === void 0 ? void 0 : rightButton.content) || React.createElement(Right, null)), React.createElement("div", {
       className: classNames('check-calendar__container', {
         'check-calendar__container--hide': loading
       }),
       ref: "calendar"
     }, React.createElement("table", {
-      className: "check-calendar__table"
+      className: classNames('check-calendar__table', tableClassName)
     }, React.createElement("thead", null), React.createElement("tbody", null, React.createElement("tr", {
       className: "check-calendar__header"
     }, React.createElement("td", {
-      className: "check-calendar__header"
+      className: classNames(headerClassName)
     }), dates.map(function (current) {
       return React.createElement("td", {
         key: current.format('YYYY_MM_DD'),
-        className: classNames({
+        className: classNames(headerClassName, {
           'check-calendar__hidden': hideDays === null || hideDays === void 0 ? void 0 : hideDays.includes(current.day())
         })
       }, React.createElement(ColumnDate, {
@@ -327,23 +366,20 @@ var CheckCalendar = /*#__PURE__*/function (_React$Component) {
       return React.createElement("tr", {
         key: row.start + "_" + row.end
       }, React.createElement(RowHeader, {
-        item: row
+        interval: row
       }), dates.map(function (day) {
         var interval = {
           start: getMomentFromNumber(day, row.start),
           end: getMomentFromNumber(day, row.end)
         };
-        var isBeforeDisabled = disableBefore ? interval.end.isBefore(moment(disableBefore)) : false;
-        var isAfterDisabled = disableAfter ? interval.start.isAfter(moment(disableAfter)) : false;
         return React.createElement("td", {
           key: day.format('YYYY_MM_DD') + "_" + row.start + "_" + row.end,
-          className: classNames({
+          className: classNames(contentClassName, {
             'check-calendar__hidden': hideDays === null || hideDays === void 0 ? void 0 : hideDays.includes(day.day())
           })
         }, React.createElement(Checkbox, {
           interval: interval,
           onChange: _this2._handleChange,
-          disabled: isBeforeDisabled || isAfterDisabled,
           checked: !!checked.find(function (c) {
             return isInInterval(c, interval);
           }),
@@ -359,5 +395,7 @@ var CheckCalendar = /*#__PURE__*/function (_React$Component) {
 CheckCalendar.defaultProps = defaultProps;
 
 exports.CheckCalendar = CheckCalendar;
+exports.LeftIcon = Left;
+exports.RightIcon = Right;
 exports.defaultProps = defaultProps;
 //# sourceMappingURL=index.js.map

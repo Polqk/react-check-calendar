@@ -9,6 +9,11 @@ interface Props {
 
 const ColumnDate: React.FC<Props> = ({ date }) => {
   const { props } = React.useContext(CheckContext);
+
+  if (props.renderColumnHeader) {
+    return props.renderColumnHeader(date);
+  }
+
   return (
     <div>
       <div>

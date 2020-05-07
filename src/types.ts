@@ -1,5 +1,5 @@
 import moment from 'moment';
-import {ComponentType} from "react";
+import {ReactElement, ReactNode} from "react";
 
 export interface DateRange {
   start: Date;
@@ -18,17 +18,33 @@ export interface CheckCalendarProps {
   start?: Date | moment.Moment | string;
   startWeekDay?: WeekDays;
   locale?: string;
-  disableBefore?: Date | moment.Moment;
-  disableAfter?: Date | moment.Moment;
-  disabledDates?: MomentOrDateRange[];
+  disableBefore?: Date | moment.Moment | string;
+  disableAfter?: Date | moment.Moment | string;
+  disabledDates?: (moment.Moment | Date | string)[];
   checkedDates?: MomentOrDateRange[];
-  leftButton?: ComponentType;
   hoursIntervals?: HourInterval[];
   datesFormats?: Partial<DatesFormats>;
   max?: Date | moment.Moment | string;
   min?: Date | moment.Moment | string;
   hideDays?: number[];
-  onChange?: (checkedIntervals: { moments: Partial<MomentRange>[], dates: Partial<DateRange>[] }) => void
+  onChange?: (checkedIntervals: { moments: Partial<MomentRange>[], dates: Partial<DateRange>[] }) => void;
+  onNextClick?: () => void;
+  onPreviousClick?: () => void;
+  leftButton?: {
+    content?: ReactNode;
+    className?: string;
+  };
+  rightButton?: {
+    content?: ReactNode;
+    className?: string;
+  };
+  containerClassName?: string;
+  tableClassName?: string;
+  headerClassName?: string;
+  contentClassName?: string;
+  headerRowClassName?: string;
+  renderColumnHeader?: (date: moment.Moment) => ReactElement;
+  renderRowHeader?: (interval: HourInterval) => ReactElement;
 }
 
 export interface CheckCalendarState {

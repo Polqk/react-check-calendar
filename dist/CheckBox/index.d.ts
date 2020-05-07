@@ -4,7 +4,7 @@ import { MomentRange } from "../types";
 export declare type CheckBoxChangeHandler = (value: boolean, props: Props) => void;
 declare type CheckboxProps = {
     ref?: any;
-    onChange?: CheckBoxChangeHandler;
+    onChange: CheckBoxChangeHandler;
     interval: MomentRange;
 };
 declare type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;

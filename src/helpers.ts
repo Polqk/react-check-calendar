@@ -41,5 +41,5 @@ export const getMomentsFromRange = (interval: MomentOrDateRange): MomentRange =>
   end: getMomentFromDate(interval.end)
 })
 
-export const getMomentFromDate = (date: Date | moment.Moment) =>
+export const getMomentFromDate = (date: Date | moment.Moment | string) =>
   date instanceof moment ? date as moment.Moment : moment(date);

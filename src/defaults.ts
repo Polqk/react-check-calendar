@@ -2,8 +2,6 @@ import {CheckCalendarContext, CheckCalendarProps, DatesFormats} from "./types";
 
 export const defaultProps: CheckCalendarProps = {
   startWeekDay: 1,
-  checkedDates: [],
-  disabledDates: [],
   locale: 'en',
   hoursIntervals: [
     { start: 8, end: 10 },

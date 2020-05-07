@@ -48,6 +48,7 @@
   height: 100%;
   cursor: pointer;
   opacity: 0;
+  margin: 0;
 }
 
 .check-calendar-checkbox__input:checked + .check-calendar-checkbox__inner {

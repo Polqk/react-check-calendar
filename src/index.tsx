@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {CheckCalendarProps, CheckCalendarState, MomentRange} from "./types";
-import Left from "./Left";
-import Right from "./Right";
+import LeftIcon from "./Left";
+import RightIcon from "./Right";
 import classNames from "classnames";
 import { defaultProps } from "./defaults";
 import { CheckContextProvider } from "./context";
@@ -23,44 +23,57 @@ class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarSta
   };
 
   render() {
-    const { hoursIntervals, hideDays, max, min, disableBefore, disableAfter, checkedDates } = this.props;
+    const {
+      hoursIntervals,
+      hideDays,
+      max,
+      min,
+      checkedDates,
+      leftButton,
+      rightButton,
+      containerClassName,
+      tableClassName,
+      headerClassName,
+      contentClassName
+    } = this.props;
+
     const { loading, currentDate, checkedRanges } = this.state;
     const dates = getArrayDates(currentDate, 7);
     const checked = Array.isArray(checkedDates) ? checkedDates : checkedRanges;
 
     return (
       <CheckContextProvider value={{ props: this.props }}>
-        <div className="check-calendar">
+        <div className={classNames('check-calendar', containerClassName)}>
           <button
-            className="check-calendar__button check-calendar__prev"
+            className={classNames('check-calendar__button check-calendar__prev', leftButton?.className)}
             disabled={!!min && dates[0].clone().subtract(1, 'day').isBefore(moment(min))}
             onClick={this._handlePrevious}
           >
-            <Left/>
+            {leftButton?.content || <LeftIcon/>}
           </button>
           <button
-            className="check-calendar__button check-calendar__next"
+            className={classNames('check-calendar__button check-calendar__next', rightButton?.className)}
             disabled={!!max && dates[dates.length - 1].clone().add(1, 'day').isAfter(moment(max))}
             onClick={this._handleNext}
           >
-            <Right/>
+            {rightButton?.content || <RightIcon/>}
           </button>
           <div
             className={classNames('check-calendar__container', {'check-calendar__container--hide': loading})}
             ref="calendar"
           >
-            <table className="check-calendar__table">
+            <table className={classNames('check-calendar__table', tableClassName)}>
               <thead/>
               <tbody>
               <tr className="check-calendar__header">
                 <td
-                  className="check-calendar__header"
+                  className={classNames(headerClassName)}
                 />
                 {dates.map((current) => {
                     return (
                       <td
                         key={current.format('YYYY_MM_DD')}
-                        className={classNames({ 'check-calendar__hidden': hideDays?.includes(current.day()) })}
+                        className={classNames(headerClassName, { 'check-calendar__hidden': hideDays?.includes(current.day()) })}
                       >
                         <ColumnDate date={current} />
                       </td>
@@ -69,25 +82,21 @@ class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarSta
               </tr>
               {hoursIntervals && hoursIntervals.map((row) => (
                 <tr key={`${row.start}_${row.end}`}>
-                  <RowHeader item={row} />
+                  <RowHeader interval={row} />
                   {dates.map(day => {
                     const interval = {
                       start: getMomentFromNumber(day, row.start),
                       end: getMomentFromNumber(day, row.end)
                     };
 
-                    const isBeforeDisabled = disableBefore ? interval.end.isBefore(moment(disableBefore)) : false;
-                    const isAfterDisabled = disableAfter ? interval.start.isAfter(moment(disableAfter)) : false;
-
                     return (
                       <td
                         key={`${day.format('YYYY_MM_DD')}_${row.start}_${row.end}`}
-                        className={classNames({ 'check-calendar__hidden': hideDays?.includes(day.day()) })}
+                        className={classNames(contentClassName, { 'check-calendar__hidden': hideDays?.includes(day.day()) })}
                       >
                         <Checkbox
                           interval={interval}
                           onChange={this._handleChange}
-                          disabled={isBeforeDisabled || isAfterDisabled}
                           checked={!!(checked).find(c => isInInterval(c, interval))}
                           value="off"
                         />
@@ -110,7 +119,7 @@ class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarSta
       this.setState({
         loading:false,
         currentDate: this.state.currentDate.clone().subtract(7, 'days')
-      });
+      }, this.props.onPreviousClick);
 
     }, 400);
 
@@ -123,7 +132,7 @@ class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarSta
       this.setState({
         loading: false,
         currentDate: this.state.currentDate.clone().add(7, 'days')
-      });
+      }, this.props.onNextClick);
     }, 400);
   };
 
@@ -165,4 +174,6 @@ export {
   CheckCalendar,
   CheckCalendarProps,
   defaultProps,
+  LeftIcon,
+  RightIcon
 };
