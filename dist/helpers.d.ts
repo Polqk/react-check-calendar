@@ -11,4 +11,4 @@ export declare const getDatesFormats: (props: CheckCalendarProps) => {
 export declare const getArrayDates: (start: moment.Moment, count: number) => moment.Moment[];
 export declare const isInInterval: (interval1: MomentOrDateRange, interval2: MomentOrDateRange) => boolean;
 export declare const getMomentsFromRange: (interval: MomentOrDateRange) => MomentRange;
-export declare const getMomentFromDate: (date: string | Date | moment.Moment) => moment.Moment;
+export declare const getMomentFromDate: (date: string | moment.Moment | Date) => moment.Moment;
