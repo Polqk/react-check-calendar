@@ -4,10 +4,13 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@tenon-io/tenon-codeblock": "^1.0.0",
+    "antd": "^4.2.0",
     "react": "link:../node_modules/react",
+    "react-check-calendar": "link:..",
     "react-dom": "link:../node_modules/react-dom",
     "react-scripts": "link:../node_modules/react-scripts",
-    "react-check-calendar": "link:.."
+    "react-syntax-highlighter": "^12.2.1"
   },
   "scripts": {
     "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",

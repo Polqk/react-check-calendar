@@ -1,4 +1,5 @@
 body {
+  width: 100vw;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -13,6 +14,50 @@ code {
     monospace;
 }
 
-.container {
-  width: 800px;
+main {
+  width: auto;
+  margin-left: 300px;
+}
+
+nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 300px;
+  height: calc(100vh - 400px);
+  overflow: hidden;
+  float: left;
+}
+
+nav > ul {
+  height: 100%;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 16px;
+}
+
+section {
+  width: 100%;
+  padding: 4em 5em;
+}
+
+section:nth-child(even) {
+  background: rgba(0, 136, 255, 0.03);
+}
+
+.example-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-container > div {
+  flex: 1;
+  padding: 20px;
 }

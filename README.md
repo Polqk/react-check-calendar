@@ -10,6 +10,10 @@
 npm install --save react-check-calendar
 ```
 
+
+## Documentation
+See [Documentation](https://polqk.github.io/react-check-calendar/)
+
 ## Usage
 
 ```tsx

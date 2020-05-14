@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 export interface DateRange {
     start: Date;
     end: Date;
@@ -42,6 +42,8 @@ export interface CheckCalendarProps {
     headerClassName?: string;
     contentClassName?: string;
     headerRowClassName?: string;
+    renderColumnHeader?: (date: moment.Moment) => ReactElement;
+    renderRowHeader?: (interval: HourInterval) => ReactElement;
 }
 export interface CheckCalendarState {
     loading: boolean;

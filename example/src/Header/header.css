@@ -1,0 +1,22 @@
+header {
+  height: 400px;
+  background: rgb(91, 169, 255);
+  color: white;
+  text-align: center;
+  border-bottom: 1px solid #e2e2e2;
+  box-shadow: 0 -10px 50px 0 rgb(91, 169, 255);
+}
+
+header > div {
+  margin: 0 auto;
+  width: 700px;
+}
+
+header > h1 {
+  color: white;
+  font-size: 45px;
+}
+
+button.white svg {
+  fill: white;
+}
