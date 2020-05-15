@@ -2,13 +2,15 @@ import React from 'react';
 import { CheckCalendar } from 'react-check-calendar';
 import Code from '../Code';
 
-const basic = `
-import React from 'react';
+const basic = `import React from 'react';
+import { CheckCalendar } from 'react-check-calendar';
 import 'react-check-calendar/dist/index.css';
 
 const Basic = () => (
    <CheckCalendar />
 );
+
+export default Basic;
 `;
 
 const Basic = () => (
@@ -19,9 +21,7 @@ const Basic = () => (
         <CheckCalendar />
       </div>
       <div>
-        <Code>
-          { basic }
-        </Code>
+        <Code text={ basic } />
       </div>
     </div>
   </section>

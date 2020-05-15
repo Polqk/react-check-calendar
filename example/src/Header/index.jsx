@@ -1,11 +1,13 @@
 import React from 'react';
+import { CheckCalendar } from 'react-check-calendar';
+import GitHubLogo from './GitHub'
 
 import './header.css';
-import { CheckCalendar } from 'react-check-calendar';
 
 export default () => (
   <header>
     <h1>React check calendar</h1>
+    <GitHubLogo />
     <div>
       <CheckCalendar
         leftButton={{ className: 'white' }}

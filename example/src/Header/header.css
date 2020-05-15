@@ -1,4 +1,5 @@
 header {
+  position: relative;
   height: 400px;
   background: rgb(91, 169, 255);
   color: white;
@@ -18,5 +19,20 @@ header > h1 {
 }
 
 button.white svg {
+  fill: white;
+}
+
+.github {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.github > span {
+  color: white;
+
+}
+
+.github > svg {
   fill: white;
 }

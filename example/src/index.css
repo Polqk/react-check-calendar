@@ -61,3 +61,31 @@ section:nth-child(even) {
   flex: 1;
   padding: 20px;
 }
+
+.code  {
+  position: relative;
+}
+
+.code > .actions {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  display: inline-block;
+}
+
+.actions > .copy {
+  cursor: pointer;
+}
+
+.actions > .lang, .actions > .copy {
+  border: white;
+  background: rgba(255, 255, 255, .8);
+  color: inherit;
+  border-radius: 5px;
+}
+
+.actions > .lang {
+  outline: none;
+  cursor: help;
+  margin-right: 4px;
+}

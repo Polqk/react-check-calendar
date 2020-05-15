@@ -4,6 +4,9 @@
 
 [![NPM](https://img.shields.io/npm/v/react-check-calendar.svg)](https://www.npmjs.com/package/react-check-calendar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+<img src="https://polqk.github.io/react-check-calendar/images/exemple.jpg" alt="React Checkbox Calendar">
+
+
 ## Install
 
 ```bash
@@ -19,7 +22,7 @@ See [Documentation](https://polqk.github.io/react-check-calendar/)
 ```tsx
 import React, { Component } from 'react'
 
-import CheckCalendar from 'react-check-calendar'
+import { CheckCalendar } from 'react-check-calendar'
 import 'react-check-calendar/dist/index.css'
 
 class Example extends Component {
