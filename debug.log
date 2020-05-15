@@ -1,3 +1,0 @@
-[0430/134439.094:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\Google\Chrome\settings.dat: Acces refusé. (0x5)
-[0430/134439.101:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
-[0430/134439.102:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\Google\Chrome\settings.dat: Acces refusé. (0x5)
