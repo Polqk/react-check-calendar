@@ -68,9 +68,9 @@ const data = [
   { name: 'hideDays', required: false, type: '[number]', default: '[0, 6]', description: 'hide colums, default [sunday, saturday]' },
   { name: 'onChange', required: false, type: `({ moments: [{ start: Moment, end: Moment}] , dates: [[ start: Date, end: Date}] }) => void`, default: '', description: 'callback on checkbox click, with list of checked dates' },
   { name: 'onNextClick', required: false, type: '() => void', default: '', description: 'next button click callback, after calendar appear' },
-  { name: 'onPreviousClick', required: false, type: '() => void', default: 'en', description: 'prev button click callbakc, after calendar appear' },
-  { name: 'leftButton', required: false, type: '{ content?: ReactNode, className?: string }', default: '{ content: < }', description: 'prev button props' },
-  { name: 'leftButton', required: false, type: '{ content?: ReactNode, className?: string }', default: '{ content: > }', description: 'next button props' },
+  { name: 'onPreviousClick', required: false, type: '() => void', default: '', description: 'prev button click callbakc, after calendar appear' },
+  { name: 'leftButton', required: false, type: '{ content?: ReactNode, className?: string }', default: '{ content: <LeftIcon /> }', description: 'prev button props' },
+  { name: 'rightButton', required: false, type: '{ content?: ReactNode, className?: string }', default: '{ content: <RightIcon /> }', description: 'next button props' },
   { name: 'containerClassName', required: false, type: 'string', default: '', description: 'container additional class' },
   { name: 'tableClassName', required: false, type: 'string', default: '', description: 'table additional class' },
   { name: 'headerClassName', required: false, type: 'string', default: '', description: 'table header additional class' },
@@ -81,8 +81,8 @@ const data = [
 ]
 
 const Parameters = () => (
-  <section id="parameters">
-    <h2>Parameters</h2>
+  <section id="properties">
+    <h2>Properties</h2>
     <Table dataSource={data} columns={cols} pagination={false} />
   </section>
 );
