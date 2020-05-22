@@ -34,8 +34,8 @@ class Example extends Component {
 
 ## Properties
 
-| Property name | type         | default        | description      |
-|---------------|-----------------|-------------|------------------|
+| Property name | type         | default   | description               |
+|---------------|--------------|---------|-----------------------|
 | `start`       | `Moment, Date, string` | `moment()` | start date |
 | `startWeekDay`| `number`     | `1`            | first calendar column day, 1 = monday  |
 | `locale`       | `string` | `en` | moment locale  |
@@ -44,20 +44,20 @@ class Example extends Component {
 | `disableBefore`       | `Moment, Date, string` |  | disable checkboxes before this date |
 | `disableAfter`       | `Moment, Date, string` |  | disable checkboxes after this date |
 | `disabledDates`       | `[Moment, Date, string]` | `[]` | list of disabled checkboxes dates |
-| `checkedDates`       | `[{ start: Date | Moment, end: Date | Moment }]` |  | list of checked checkboxes |
-| `hoursIntervals`       | `[{ start: number, end: number }]` | `[{ start: 8, end: 10 }, { start: 10, end: 12 }, { start: 13, end: 15 }, { start: 15, end: 17 }]` | `list of rows, decimals will be converted 12.25 => 12:15 (12 + 0.25 * 60)` |
+| `checkedDates`       | `[{ start: Date, Moment, end: Date, Moment }]` |  | list of checked checkboxes |
+| `hoursIntervals`       | `[{ start: number, end: number }]` | `[{ start: 8, end: 10 }, { start: 10, end: 12 }, { start: 13, end: 15 }, { start: 15, end: 17 }]` | list of rows, decimals will be converted 12.25 => 12:15 (12 + 0.25 * 60) |
 | `datesFormats`       | `{ fromHour?: string, toHour?: string }` | `{fromHour: '[from] [<strong>]h:mm[</strong>][<small>]a[</small>]', toHour: ' [to] [<strong>]h:mm[</strong>][<small>]a[</small>]' }` | intervals dates format, accepted by moment |
-| `hideDays`       | `[number]` | `[0, 6]` | `hide colums, default [sunday, saturday]` |
+| `hideDays`       | `[number]` | `[0, 6]` | hide colums, default `[sunday, saturday]` |
 | `onChange`       | `({ moments: [{ start: Moment, end: Moment}] , dates: [[ start: Date, end: Date}] }) => void` |  | callback on checkbox click, with list of checked dates |
 | `onNextClick`       | `() => void` |  | next button click callback, after calendar appear |
 | `onPreviousClick`       | `() => void` | `moment()` (`Date`) | start date |
 | `leftButton`       | `{ content?: ReactNode, className?: string }` | `{ content: <LeftIcon /> }` | prev button props |
 | `rightButton`       | `{ content?: ReactNode, className?: string }` | `{ content: <RightIcon /> }` | next button props |
-| `containerClassName`       | `string` | `` | container additional class |
-| `tableClassName`       | `string` | `` | 	table additional class |
-| `headerClassName`       | `string` | `` | table header additional class |
-| `contentClassName`       | `string` | `` | table content additional class |
-| `headerRowClassName`       | `string` | `` | row interval additional class |
+| `containerClassName`       | `string` |  | container additional class |
+| `tableClassName`       | `string` |  | 	table additional class |
+| `headerClassName`       | `string` |  | table header additional class |
+| `contentClassName`       | `string` |  | table content additional class |
+| `headerRowClassName`       | `string` |  | row interval additional class |
 | `renderColumnHeader`       | `(date: Moment) => ReactElement` |  | callback to render column header |
 | `renderRowHeader`       | `	(date: Moment) => ReactElement` |  | callback to render intervals |
 
