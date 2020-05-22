@@ -56,7 +56,7 @@ const getDatesFormats = props => ({ ...defaultDatesFormats,
 });
 const getArrayDates = (start, count) => {
   const dates = [];
-  const clonedStart = start.clone().set('hour', 0).set('minute', 0).set('second', 0).set('millisecond', 0);
+  const clonedStart = start.clone().set('hour', 0).set('minute', 0).set('second', 1).set('millisecond', 0);
 
   for (let i = 0; i < count; i++) {
     dates.push(clonedStart.clone().add(i, 'day'));
@@ -191,7 +191,7 @@ let CheckCalendar = (() => {
         setTimeout(() => {
           this.setState({
             loading: false,
-            currentDate: this.state.currentDate.clone().subtract(7, 'days')
+            currentDate: this.state.currentDate.subtract(7, 'days')
           }, this.props.onPreviousClick);
         }, 400);
       };
@@ -203,7 +203,7 @@ let CheckCalendar = (() => {
         setTimeout(() => {
           this.setState({
             loading: false,
-            currentDate: this.state.currentDate.clone().add(7, 'days')
+            currentDate: this.state.currentDate.add(7, 'days')
           }, this.props.onNextClick);
         }, 400);
       };
@@ -272,6 +272,9 @@ let CheckCalendar = (() => {
       } = this.state;
       const dates = getArrayDates(currentDate, 7);
       const checked = Array.isArray(checkedDates) ? checkedDates : checkedRanges;
+      const prevDisabled = loading || !!min && dates[0].clone().set('hour', 0).isBefore(moment(min));
+      const nextDisabled = loading || !!max && dates[dates.length - 1].clone().set('hour', 23).isAfter(moment(max));
+      console.log('max', !!max && dates[dates.length - 1].clone().set('hour', 23).isAfter(moment(max)), 'min', !!min && dates[0].clone().set('hour', 0).isBefore(moment(min)));
       return createElement(CheckContextProvider, {
         value: {
           props: this.props
@@ -280,11 +283,11 @@ let CheckCalendar = (() => {
         className: classNames('check-calendar', containerClassName)
       }, createElement("button", {
         className: classNames('check-calendar__button check-calendar__prev', leftButton === null || leftButton === void 0 ? void 0 : leftButton.className),
-        disabled: !!min && dates[0].clone().subtract(1, 'day').isBefore(moment(min)),
+        disabled: prevDisabled,
         onClick: this._handlePrevious
       }, (leftButton === null || leftButton === void 0 ? void 0 : leftButton.content) || createElement(Left, null)), createElement("button", {
         className: classNames('check-calendar__button check-calendar__next', rightButton === null || rightButton === void 0 ? void 0 : rightButton.className),
-        disabled: !!max && dates[dates.length - 1].clone().add(1, 'day').isAfter(moment(max)),
+        disabled: nextDisabled,
         onClick: this._handleNext
       }, (rightButton === null || rightButton === void 0 ? void 0 : rightButton.content) || createElement(Right, null)), createElement("div", {
         className: classNames('check-calendar__container', {
@@ -296,17 +299,16 @@ let CheckCalendar = (() => {
       }, createElement("thead", null), createElement("tbody", null, createElement("tr", {
         className: "check-calendar__header"
       }, createElement("td", {
+        key: "header_empty",
         className: classNames(headerClassName)
-      }), dates.map(current => {
-        return createElement("td", {
-          key: current.format('YYYY_MM_DD'),
-          className: classNames(headerClassName, {
-            'check-calendar__hidden': hideDays === null || hideDays === void 0 ? void 0 : hideDays.includes(current.day())
-          })
-        }, createElement(ColumnDate, {
-          date: current
-        }));
-      })), hoursIntervals && hoursIntervals.map(row => createElement("tr", {
+      }), dates.map(current => createElement("td", {
+        key: `check-calendar-header-${current.format('YYYY_MM_DD')}`,
+        className: classNames(headerClassName, {
+          'check-calendar__hidden': hideDays === null || hideDays === void 0 ? void 0 : hideDays.includes(current.day())
+        })
+      }, createElement(ColumnDate, {
+        date: current
+      })))), hoursIntervals && hoursIntervals.map(row => createElement("tr", {
         key: `${row.start}_${row.end}`
       }, createElement(RowHeader, {
         interval: row
@@ -316,7 +318,7 @@ let CheckCalendar = (() => {
           end: getMomentFromNumber(day, row.end)
         };
         return createElement("td", {
-          key: `${day.format('YYYY_MM_DD')}_${row.start}_${row.end}`,
+          key: `${day.format('YYYY_MM_DD')}_${interval.start}_${interval.end}`,
           className: classNames(contentClassName, {
             'check-calendar__hidden': hideDays === null || hideDays === void 0 ? void 0 : hideDays.includes(day.day())
           })
@@ -335,5 +337,6 @@ let CheckCalendar = (() => {
   return CheckCalendar;
 })();
 
-export { CheckCalendar, Left as LeftIcon, Right as RightIcon, defaultProps };
+export default CheckCalendar;
+export { CheckCalendar, Checkbox, Left as LeftIcon, Right as RightIcon, defaultProps };
 //# sourceMappingURL=index.modern.js.map

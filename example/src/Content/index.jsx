@@ -4,6 +4,7 @@ import Installation from './installation';
 import Introduction from './introduction';
 import Basic from './basic';
 import Parameters from './parameters';
+import Controlled from './controlled';
 
 const Content = () => {
   return (
@@ -12,6 +13,7 @@ const Content = () => {
       <Installation />
       <Basic />
       <Parameters />
+      <Controlled />
     </main>
   );
 };

@@ -1,4 +1,5 @@
 header {
+  max-width: 100vw;
   position: relative;
   height: 400px;
   background: rgb(91, 169, 255);

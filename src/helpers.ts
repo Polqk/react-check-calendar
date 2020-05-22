@@ -17,7 +17,7 @@ export const getDatesFormats = (props: CheckCalendarProps) =>
 export const getArrayDates = (start: moment.Moment, count: number) => {
   const dates = []
 
-  const clonedStart = start.clone().set('hour', 0).set('minute', 0).set('second', 0).set('millisecond', 0);
+  const clonedStart = start.clone().set('hour', 0).set('minute', 0).set('second', 1).set('millisecond', 0);
 
   for (let i = 0; i < count; i++) {
     dates.push(clonedStart.clone().add(i, 'day'));

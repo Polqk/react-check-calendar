@@ -6,7 +6,7 @@ const cols = [
   { title: 'Parameter name', key: 'name', dataIndex: 'name', maxWidth: 150 },
   { title: 'Type', key: 'type', dataIndex: 'type' },
   { title: 'Default', key: 'default', dataIndex: 'default' },
-  { title: 'Description', key: 'description', dataIndex: 'description' },
+  { title: 'Description', key: 'description', dataIndex: 'description' }
   /*{ title: 'Required', key: 'required', dataIndex: 'required',
     render: (required) => (
       <Checkbox checked={required} disabled={!required} />
@@ -51,7 +51,7 @@ const data = [
       <div>{`{ start: 13, end: 15 },`}</div>
       <div>{`{ start: 15, end: 17 }`}]</div>
     </div>),
-    description: <div>list of rows, decimals will be converted <br/> 12.25 => 12:15 (12 + 0.25 * 60)</div>
+    description: <div>list of rows, decimals will be converted <br/> 12.25 { '->' } 12:15 (12 + 0.25 * 60)</div>
   },
   {
     name: 'datesFormats',
@@ -61,7 +61,7 @@ const data = [
       {'{'}<br />
       {`fromHour: '[from] [<strong>]h:mm[</strong>][<small>]a[</small>]'`},<br />
       {`toHour: ' [to] [<strong>]h:mm[</strong>][<small>]a[</small>]'`} <br />
-    }
+      { '}' }
     </div>),
     description: 'intervals dates format, accepted by moment'
   },
@@ -83,7 +83,11 @@ const data = [
 const Parameters = () => (
   <section id="properties">
     <h2>Properties</h2>
-    <Table dataSource={data} columns={cols} pagination={false} />
+    <Table
+      dataSource={data.map((d) => ({ ...d, key: d.name}))}
+      columns={cols}
+      pagination={false}
+    />
   </section>
 );
 

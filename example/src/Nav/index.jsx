@@ -21,7 +21,7 @@ export default () => {
           return (
             <Menu.Item
               key={section.id}
-              onClick={() => section.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => section.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'start' })}
             >
               {section.id && section.id[0].toUpperCase() + section.id.substr(1).split('-').join(' ')}
             </Menu.Item>

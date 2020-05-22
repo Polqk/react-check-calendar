@@ -4,7 +4,7 @@ import LeftIcon from "./Left";
 import RightIcon from "./Right";
 import { defaultProps } from "./defaults";
 import moment from "moment";
-import { CheckBoxChangeHandler } from "./CheckBox";
+import Checkbox, { CheckBoxChangeHandler } from "./CheckBox";
 import './styles.css';
 declare class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarState> {
     static defaultProps: CheckCalendarProps;
@@ -18,4 +18,4 @@ declare class CheckCalendar extends React.Component<CheckCalendarProps, CheckCal
     _handleNext: () => void;
     _handleChange: CheckBoxChangeHandler;
 }
-export { CheckCalendar, CheckCalendarProps, defaultProps, LeftIcon, RightIcon };
+export { CheckCalendar as default, CheckCalendar, CheckCalendarProps, defaultProps, LeftIcon, RightIcon, Checkbox };

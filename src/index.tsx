@@ -41,44 +41,56 @@ class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarSta
     const dates = getArrayDates(currentDate, 7);
     const checked = Array.isArray(checkedDates) ? checkedDates : checkedRanges;
 
+    const prevDisabled = loading || (!!min && dates[0].clone().set('hour', 0).isBefore(moment(min)));
+    const nextDisabled = loading || (!!max && dates[dates.length - 1].clone().set('hour', 23).isAfter(moment(max)));
+
+    console.log('max', (!!max && dates[dates.length - 1].clone().set('hour', 23).isAfter(moment(max))), 'min', !!min && dates[0].clone().set('hour', 0).isBefore(moment(min)));
+
     return (
       <CheckContextProvider value={{ props: this.props }}>
         <div className={classNames('check-calendar', containerClassName)}>
           <button
-            className={classNames('check-calendar__button check-calendar__prev', leftButton?.className)}
-            disabled={!!min && dates[0].clone().subtract(1, 'day').isBefore(moment(min))}
+            className={classNames(
+              'check-calendar__button check-calendar__prev',
+              leftButton?.className
+            )}
+            disabled={prevDisabled}
             onClick={this._handlePrevious}
           >
-            {leftButton?.content || <LeftIcon/>}
+            {leftButton?.content || <LeftIcon />}
           </button>
           <button
-            className={classNames('check-calendar__button check-calendar__next', rightButton?.className)}
-            disabled={!!max && dates[dates.length - 1].clone().add(1, 'day').isAfter(moment(max))}
+            className={classNames(
+              'check-calendar__button check-calendar__next',
+              rightButton?.className
+            )}
+            disabled={nextDisabled}
             onClick={this._handleNext}
           >
             {rightButton?.content || <RightIcon/>}
           </button>
           <div
-            className={classNames('check-calendar__container', {'check-calendar__container--hide': loading})}
+            className={classNames('check-calendar__container', {
+              'check-calendar__container--hide': loading
+            })}
             ref="calendar"
           >
-            <table className={classNames('check-calendar__table', tableClassName)}>
-              <thead/>
+            <table className={classNames('check-calendar__table', tableClassName)} >
+              <thead />
               <tbody>
               <tr className="check-calendar__header">
                 <td
+                  key="header_empty"
                   className={classNames(headerClassName)}
                 />
-                {dates.map((current) => {
-                    return (
-                      <td
-                        key={current.format('YYYY_MM_DD')}
-                        className={classNames(headerClassName, { 'check-calendar__hidden': hideDays?.includes(current.day()) })}
-                      >
-                        <ColumnDate date={current} />
-                      </td>
-                    );
-                  })}
+                {dates.map((current) => (
+                  <td
+                    key={`check-calendar-header-${current.format('YYYY_MM_DD')}`}
+                    className={classNames(headerClassName, { 'check-calendar__hidden': hideDays?.includes(current.day()) })}
+                  >
+                    <ColumnDate date={current} />
+                  </td>
+                ))}
               </tr>
               {hoursIntervals && hoursIntervals.map((row) => (
                 <tr key={`${row.start}_${row.end}`}>
@@ -91,7 +103,7 @@ class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarSta
 
                     return (
                       <td
-                        key={`${day.format('YYYY_MM_DD')}_${row.start}_${row.end}`}
+                        key={`${day.format('YYYY_MM_DD')}_${interval.start}_${interval.end}`}
                         className={classNames(contentClassName, { 'check-calendar__hidden': hideDays?.includes(day.day()) })}
                       >
                         <Checkbox
@@ -118,7 +130,7 @@ class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarSta
     setTimeout(() => {
       this.setState({
         loading:false,
-        currentDate: this.state.currentDate.clone().subtract(7, 'days')
+        currentDate: this.state.currentDate.subtract(7, 'days')
       }, this.props.onPreviousClick);
 
     }, 400);
@@ -131,7 +143,7 @@ class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarSta
     setTimeout(() => {
       this.setState({
         loading: false,
-        currentDate: this.state.currentDate.clone().add(7, 'days')
+        currentDate: this.state.currentDate.add(7, 'days')
       }, this.props.onNextClick);
     }, 400);
   };
@@ -140,11 +152,11 @@ class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarSta
     const { checkedRanges } = this.state;
     const { interval } = props;
     const { onChange, checkedDates } = this.props;
-    let newChecked = [...Array.isArray(checkedDates) ? checkedDates : checkedRanges];
+    let newChecked = [...(Array.isArray(checkedDates) ? checkedDates : checkedRanges)];
+
     if (value) {
       newChecked.push(interval);
     } else {
-
       const foundIndex = newChecked.findIndex((c) => isInInterval(c, interval));
 
       if (foundIndex > -1) {
@@ -155,12 +167,10 @@ class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarSta
     newChecked = newChecked.map(i => getMomentsFromRange(i));
 
     if (onChange) {
-
       onChange({
         dates: (newChecked as MomentRange[]).map(i => ({ start: i.start.toDate(), end: i.end.toDate() })) ,
         moments: newChecked as MomentRange[]
-      });
-
+      })
     }
 
     if (!Array.isArray(checkedDates)) {
@@ -171,9 +181,11 @@ class CheckCalendar extends React.Component<CheckCalendarProps, CheckCalendarSta
 }
 
 export {
+  CheckCalendar as default,
   CheckCalendar,
   CheckCalendarProps,
   defaultProps,
   LeftIcon,
-  RightIcon
-};
+  RightIcon,
+  Checkbox
+}
