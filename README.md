@@ -36,14 +36,14 @@ class Example extends Component {
 
 | Property name | type         | default        | description      |
 |---------------|-----------------|-------------|------------------|
-| `start`       | `Moment | Date | string` | `moment()` | start date |
+| `start`       | `Moment, Date, string` | `moment()` | start date |
 | `startWeekDay`| `number`     | `1`            | first calendar column day, 1 = monday  |
 | `locale`       | `string` | `en` | moment locale  |
-| `max`       | `Moment | Date | string` |  | max calendar limit, disable next button after this date |
-| `min`       | `Moment | Date | string` |  | min calendar limit, disable prev button before this date |
-| `disableBefore`       | `Moment | Date | string` |  | disable checkboxes before this date |
-| `disableAfter`       | `Moment | Date | string` |  | disable checkboxes after this date |
-| `disabledDates`       | `[Moment | Date | string]` | [] | list of disabled checkboxes dates |
+| `max`       | `Moment, Date, string` |  | max calendar limit, disable next button after this date |
+| `min`       | `Moment, Date, string` |  | min calendar limit, disable prev button before this date |
+| `disableBefore`       | `Moment, Date, string` |  | disable checkboxes before this date |
+| `disableAfter`       | `Moment, Date, string` |  | disable checkboxes after this date |
+| `disabledDates`       | `[Moment, Date, string]` | `[]` | list of disabled checkboxes dates |
 | `checkedDates`       | `[{ start: Date | Moment, end: Date | Moment }]` |  | list of checked checkboxes |
 | `hoursIntervals`       | `[{ start: number, end: number }]` | `[{ start: 8, end: 10 }, { start: 10, end: 12 }, { start: 13, end: 15 }, { start: 15, end: 17 }]` | `list of rows, decimals will be converted 12.25 => 12:15 (12 + 0.25 * 60)` |
 | `datesFormats`       | `{ fromHour?: string, toHour?: string }` | `{fromHour: '[from] [<strong>]h:mm[</strong>][<small>]a[</small>]', toHour: ' [to] [<strong>]h:mm[</strong>][<small>]a[</small>]' }` | intervals dates format, accepted by moment |
